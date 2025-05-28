@@ -619,7 +619,7 @@ const TryOn = () => {
     }
 
     try {
-      const response = await fetch("https://hairlyf-backend-api.onrender.com/api/upload", {
+      const response = await fetch("http://hairgain-lb-242445726.us-east-1.elb.amazonaws.com/swap_hair_file", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
