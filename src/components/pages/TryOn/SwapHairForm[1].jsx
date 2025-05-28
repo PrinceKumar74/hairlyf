@@ -16,7 +16,7 @@
 //     formData.set('use_poisson', form.use_poisson.checked.toString());
 
 //     setLoading(true);
-    
+
 //     setResultImgSrc(null);
 
 //     try {
@@ -271,7 +271,7 @@
 //       if (!wigBlob) {
 //         throw new Error(`Failed to process the wig image (${wig.name}). Please check the wig image source.`);
 //       }
-      
+
 //       const formData = new FormData();
 //       const faceFileExtension = faceBlob.type.split('/')[1] || 'png';
 //       const wigFileExtension = wigBlob.type.split('/')[1] || 'png';
@@ -399,7 +399,7 @@
 //                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
 //                     </svg>
 //                     <span className="ml-1 font-bold">{wig.rating}</span>
-                    
+
 //                   </div>
 //                   <div className="mb-4">
 //                     <span className="text-2xl font-bold text-orange-600">{wig.price}</span>
@@ -558,7 +558,7 @@
 //         use_poisson: false, // Hardcoded
 //         poisson_erosion: 15, // Hardcoded
 //       };
-      
+
 //       const response = await fetch('http://hairgain-lb-242445726.us-east-1.elb.amazonaws.com/swap_hair_base64', {
 //         method: 'POST',
 //         headers: {
@@ -704,7 +704,7 @@ const dataURLtoBlob = (dataurl) => {
     }
     return new Blob([u8arr], { type: mime });
   } catch (e) {
-    console.error('Error decoding base64 string during blob conversion:', e, dataurl.substring(0,100) + '...');
+    console.error('Error decoding base64 string during blob conversion:', e, dataurl.substring(0, 100) + '...');
     return null;
   }
 };
@@ -714,25 +714,25 @@ const PREDEFINED_WIGS = [
   {
     id: 'wig1',
     name: 'Curly Wave Style 1',
-    imgSrc: '/Wigs/wig3.png', 
+    imgSrc: '/Wigs/wig3.png',
     rating: 4.8, price: '₹1280', originalPrice: '₹2290', discount: '(50% OFF)',
   },
   {
     id: 'wig2',
     name: 'Straight Bob Style',
-    imgSrc: '/Wigs/wig3.png', 
+    imgSrc: '/Wigs/wig3.png',
     rating: 4.7, price: '₹1350', originalPrice: '₹2400', discount: '(44% OFF)',
   },
   {
     id: 'wig3',
     name: 'Long Layers Style',
-    imgSrc: '/Wigs/wig3.png', 
+    imgSrc: '/Wigs/wig3.png',
     rating: 4.9, price: '₹1500', originalPrice: '₹3000', discount: '(50% OFF)',
   },
   {
     id: 'wig4',
     name: 'Short Pixie Cut',
-    imgSrc: '/Wigs/wig3.png', 
+    imgSrc: '/Wigs/wig3.png',
     rating: 4.6, price: '₹1100', originalPrice: '₹2000', discount: '(45% OFF)',
   },
 ];
@@ -754,7 +754,7 @@ const SwapHairForm = () => {
       if (savedFaceImage) {
         setFaceImageBase64(savedFaceImage);
         setOriginalFaceImageSrc(savedFaceImage);
-        setMainDisplayImageSrc(savedFaceImage); 
+        setMainDisplayImageSrc(savedFaceImage);
       } else {
         setOriginalFaceImageSrc(placeholderOriginal);
         setMainDisplayImageSrc(placeholderPreview);
@@ -770,7 +770,7 @@ const SwapHairForm = () => {
 
   const handleResetPreview = () => {
     if (faceImageBase64) {
-      setMainDisplayImageSrc(faceImageBase64); 
+      setMainDisplayImageSrc(faceImageBase64);
       setError('');
     } else {
       setMainDisplayImageSrc(placeholderPreview);
@@ -800,7 +800,7 @@ const SwapHairForm = () => {
       if (!wigBlob) {
         throw new Error(`Failed to process the wig image (${wig.name}). Please check the wig image source.`);
       }
-      
+
       const formData = new FormData();
       const faceFileExtension = faceBlob.type.split('/')[1] || 'png';
       const wigFileExtension = wigBlob.type.split('/')[1] || 'png';
@@ -812,14 +812,20 @@ const SwapHairForm = () => {
       formData.append('use_poisson', 'false');
       formData.append('poisson_erosion', '15');
 
-      const response = await fetch('http://hairgain-lb-242445726.us-east-1.elb.amazonaws.com/swap_hair_file', {
+      // const response = await fetch('http://hairgain-lb-242445726.us-east-1.elb.amazonaws.com/swap_hair_file', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Accept': 'image/png', 
+      //   },
+      //   body: formData,
+      // });
+      const response = await fetch('/api/swap_hair_file', {
         method: 'POST',
         headers: {
-          'Accept': 'image/png', 
+          'Accept': 'image/png',
         },
         body: formData,
       });
-
       if (!response.ok) {
         const errorText = await response.text();
         throw new Error(`Hair swap service failed (status ${response.status}): ${errorText.substring(0, 200)}`);
@@ -874,21 +880,21 @@ const SwapHairForm = () => {
           <div className="flex flex-col items-center">
             <h2 className="text-2xl font-semibold text-gray-700 mb-3 text-center">Try-On Preview</h2>
             <div className="w-full max-w-sm bg-gray-100 rounded-xl shadow-lg p-3 relative">
-                {loading && (
+              {loading && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center bg-white bg-opacity-80 z-10 rounded-lg">
-                    <div className="w-16 h-16 border-4 border-orange-300 border-t-orange-600 rounded-full animate-spin"></div>
-                    <p className="mt-3 text-orange-600 font-semibold">Swapping Style...</p>
+                  <div className="w-16 h-16 border-4 border-orange-300 border-t-orange-600 rounded-full animate-spin"></div>
+                  <p className="mt-3 text-orange-600 font-semibold">Swapping Style...</p>
                 </div>
-                )}
-                <img
-                    src={mainDisplayImageSrc}
-                    alt="Hair try-on result"
-                    className="w-full h-auto object-contain rounded-lg aspect-[4/4]"
-                    onError={() => { 
-                    setError("Could not display the preview image.");
-                    setMainDisplayImageSrc(placeholderPreview);
-                    }}
-                />
+              )}
+              <img
+                src={mainDisplayImageSrc}
+                alt="Hair try-on result"
+                className="w-full h-auto object-contain rounded-lg aspect-[4/4]"
+                onError={() => {
+                  setError("Could not display the preview image.");
+                  setMainDisplayImageSrc(placeholderPreview);
+                }}
+              />
             </div>
             <button
               onClick={handleResetPreview}
@@ -925,7 +931,7 @@ const SwapHairForm = () => {
                   <h3 className="text-xl font-semibold text-gray-800 mb-2 group-hover:text-orange-600 transition-colors">{wig.name}</h3>
                   <div className="text-sm text-yellow-500 mb-2 flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                     <span className="ml-1 font-bold">{wig.rating}</span>
                     <span className="text-gray-500 ml-2 text-xs">(Sample Rating)</span>
