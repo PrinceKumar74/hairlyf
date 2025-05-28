@@ -1,0 +1,55 @@
+  .scrolling-header {
+    height: 40px;
+    background-color: #c7c1f5;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .marquee-container {
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .marquee-content {
+    display: flex;
+    animation: marquee 20s linear infinite;
+    white-space: nowrap;
+    will-change: transform;
+    align-items: center;
+  }
+  
+  .scrolling-header:hover .marquee-content {
+    animation-play-state: paused;
+  }
+  
+  .header-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 20px;
+    flex-shrink: 0;
+  }
+  
+  .header-icon {
+    display: flex;
+    align-items: center;
+    color: #6b46c1;
+  }
+  
+  .header-text {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #4a5568;
+  }
+  
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-33.33%);
+    }
+  }
