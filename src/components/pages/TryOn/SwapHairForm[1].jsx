@@ -812,17 +812,10 @@ const SwapHairForm = () => {
       formData.append('use_poisson', 'false');
       formData.append('poisson_erosion', '15');
 
-      // const response = await fetch('http://hairgain-lb-242445726.us-east-1.elb.amazonaws.com/swap_hair_file', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Accept': 'image/png', 
-      //   },
-      //   body: formData,
-      // });
-      const response = await fetch('/api/swap_hair_file', {
+      const response = await fetch('http://hairgain-lb-242445726.us-east-1.elb.amazonaws.com/swap_hair_file', {
         method: 'POST',
         headers: {
-          'Accept': 'image/png',
+          'Accept': 'image/png', 
         },
         body: formData,
       });
