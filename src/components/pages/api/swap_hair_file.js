@@ -5,7 +5,7 @@ export const config = {
 };
 
 export default async function handler(req, res) {
-  const API_URL = 'http://hairgain-lb-242445726.us-east-1.elb.amazonaws.com/swap_hair_file';
+  const API_URL = 'https://www.campusdost.in/swap_hair_file';
 
   try {
     const fetch = (await import('node-fetch')).default;
