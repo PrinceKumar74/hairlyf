@@ -1,1 +1,1 @@
-export const API_BASE_URL = "https://www.campusdost.in/swap_hair_file";
+export const API_BASE_URL = "https://hairlyf-backend-api.onrender.com"

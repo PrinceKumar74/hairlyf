@@ -53,36 +53,36 @@
 //     document.body.removeChild(link);
 //   };
 
-// // Function to send the captured image to the backend
-// const handleSubmit = async () => {
-//   if (!capturedImage) {
-//     alert("Please capture or upload an image first.");
-//     return;
-//   }
-
-//   try {
-//     const response = await fetch("https://your-backend-api-endpoint.com/upload", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify({ image: capturedImage }),
-//     });
-
-//     if (response.ok) {
-//       const result = await response.json();
-//       console.log("Backend Response:", result);
-//       alert("Image successfully sent to the backend!");
-//     } else {
-//       console.error("Failed to send image to backend.");
-//       alert("Failed to send image to backend.");
-//     }
-//   } catch (error) {
-//     console.error("Error sending image to backend:", error);
-//     alert("An error occurred while sending the image.");
-//   }
-// };
-
+    // // Function to send the captured image to the backend
+    // const handleSubmit = async () => {
+    //   if (!capturedImage) {
+    //     alert("Please capture or upload an image first.");
+    //     return;
+    //   }
+  
+    //   try {
+    //     const response = await fetch("https://your-backend-api-endpoint.com/upload", {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify({ image: capturedImage }),
+    //     });
+  
+    //     if (response.ok) {
+    //       const result = await response.json();
+    //       console.log("Backend Response:", result);
+    //       alert("Image successfully sent to the backend!");
+    //     } else {
+    //       console.error("Failed to send image to backend.");
+    //       alert("Failed to send image to backend.");
+    //     }
+    //   } catch (error) {
+    //     console.error("Error sending image to backend:", error);
+    //     alert("An error occurred while sending the image.");
+    //   }
+    // };
+  
 
 //   return (
 //     <div className="min-h-screen bg-gradient-to-br from-blue-400 via-blue-200 to-purple-400 flex flex-col items-center py-10 px-4">
@@ -94,7 +94,7 @@
 //         <p className="text-sm text-gray-600 mt-2">
 //           Experience our advanced 3D hair visualization technology
 //         </p>
-
+        
 //       </div>
 
 //       {/* Main Section */}
@@ -172,8 +172,8 @@
 //           />
 //          {/* suggestion was here */}
 //           <div className="flex flex-col items-center">
-
-
+            
+              
 //             <img
 //               src={imageUrl}
 //               alt="Hair Suggestion"
@@ -363,7 +363,7 @@
 //         alert("Please capture or upload an image first.");
 //         return;
 //       }
-
+  
 //       try {
 //         const response = await fetch("https://your-backend-api-endpoint.com/upload", {
 //           method: "POST",
@@ -372,7 +372,7 @@
 //           },
 //           body: JSON.stringify({ image: capturedImage }),
 //         });
-
+  
 //         if (response.ok) {
 //           const result = await response.json();
 //           console.log("Backend Response:", result);
@@ -386,7 +386,7 @@
 //         alert("An error occurred while sending the image.");
 //       }
 //     };
-
+  
 
 //   const WebcamSection = () => (
 //     <div className="flex flex-col items-center gap-4">
@@ -486,7 +486,7 @@
 //       {isMobileView && (
 //         <div className="md:hidden flex flex-col items-center gap-8 w-full">
 //           <WebcamSection />
-
+          
 //           <div className="w-full max-w-lg">
 //             <Carousel 
 //               showArrows={true} 
@@ -567,7 +567,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Webcam from "react-webcam";
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import { Camera, Image as ImageIcon, Upload, ChevronLeft } from "lucide-react";
 
 // products array and ProductCard component are removed as per new UI.
@@ -619,7 +619,7 @@ const TryOn = () => {
     }
 
     try {
-      const response = await fetch("https://www.campusdost.in/swap_hair_file", {
+      const response = await fetch("https://your-backend-api-endpoint.com/upload", { // Placeholder
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -632,11 +632,11 @@ const TryOn = () => {
         console.log("Backend Response:", result);
         alert("Image successfully sent to the backend!");
       }
-
-
+        
+      
     } catch (error) {
       console.error("Error submitting image:", error);
-
+      
     }
   };
 
@@ -677,8 +677,8 @@ const TryOn = () => {
       {/* Header Section */}
       {isMobileView ? (
         <div className="w-full flex items-center mb-6 sm:mb-8 relative px-2">
-          <button
-            onClick={() => window.history.back()}
+          <button 
+            onClick={() => window.history.back()} 
             className="absolute left-0 text-gray-700 hover:text-gray-900 transition-colors p-2"
             aria-label="Go back"
           >
@@ -700,7 +700,7 @@ const TryOn = () => {
       )}
 
       {/* Image Display Area */}
-      <div
+      <div 
         className={`bg-[#DDCDBF] rounded-xl flex items-center justify-center shadow-lg 
                    ${isMobileView ? 'w-[90vw] max-w-[380px] h-auto aspect-[6/5] p-3' : 'w-full max-w-[500px] h-[320px] p-4'}
                   `}
@@ -732,15 +732,15 @@ const TryOn = () => {
 
       {/* Action Buttons */}
       <div className={`mt-8 flex ${isMobileView ? 'flex-col space-y-3 w-[90vw] max-w-[380px]' : 'flex-row space-x-4 items-center'} justify-center`}>
-        <button
-          onClick={handleCaptureButtonClick}
+        <button 
+          onClick={handleCaptureButtonClick} 
           className={`text-white px-6 py-3 rounded-full shadow-md hover:opacity-90 transition-opacity flex items-center justify-center gap-2 font-medium
                      ${isMobileView ? 'w-full' : 'min-w-[160px]'} bg-[#A57E6E]`}
         >
           <Camera size={20} /> {isCameraOn ? 'Take Picture' : 'Capture'}
         </button>
-        <button
-          onClick={handleGalleryButtonClick}
+        <button 
+          onClick={handleGalleryButtonClick} 
           className={`border px-6 py-3 rounded-full shadow-md hover:bg-gray-50 transition-colors flex items-center justify-center gap-2 font-medium
                      ${isMobileView ? 'w-full' : 'min-w-[160px]'} bg-white text-[#A57E6E] border-[#A57E6E]`}
         >
@@ -760,17 +760,17 @@ const TryOn = () => {
             Clear & Start Over
           </button>
           {capturedImage && !isCameraOn && (
-            <Link to="/swap">  <button
+          <Link to="/swap">  <button
               onClick={handleSubmit}
               className={`text-white px-6 py-3 rounded-full shadow-md transition-colors font-medium
                          ${isMobileView ? 'w-full' : 'min-w-[160px]'} bg-sky-500 hover:bg-sky-600`}
             >
-              Submit Image
+             Submit Image
             </button></Link>
           )}
         </div>
       )}
-
+      
       <input
         type="file"
         accept="image/*"

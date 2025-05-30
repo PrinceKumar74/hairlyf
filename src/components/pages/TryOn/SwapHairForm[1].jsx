@@ -812,13 +812,14 @@ const SwapHairForm = () => {
       formData.append('use_poisson', 'false');
       formData.append('poisson_erosion', '15');
 
-      const response = await fetch('/api/swap_hair_file', {
+      const response = await fetch('https://www.campusdost.in/swap_hair_file', {
         method: 'POST',
         headers: {
-          'Accept': 'image/png', 
+          'Accept': 'image/png',
         },
         body: formData,
       });
+
       if (!response.ok) {
         const errorText = await response.text();
         throw new Error(`Hair swap service failed (status ${response.status}): ${errorText.substring(0, 200)}`);
