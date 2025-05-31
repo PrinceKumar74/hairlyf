@@ -714,13 +714,13 @@ const PREDEFINED_WIGS = [
   {
     id: 'wig1',
     name: 'Curly Wave Style 1',
-    imgSrc: '/Wigs/wig3.png',
+    imgSrc: '/Wigs/wig1.png',
     rating: 4.8, price: '₹1280', originalPrice: '₹2290', discount: '(50% OFF)',
   },
   {
     id: 'wig2',
     name: 'Straight Bob Style',
-    imgSrc: '/Wigs/wig3.png',
+    imgSrc: '/Wigs/wig2.png',
     rating: 4.7, price: '₹1350', originalPrice: '₹2400', discount: '(44% OFF)',
   },
   {
@@ -732,7 +732,7 @@ const PREDEFINED_WIGS = [
   {
     id: 'wig4',
     name: 'Short Pixie Cut',
-    imgSrc: '/Wigs/wig3.png',
+    imgSrc: '/Wigs/wig4.png',
     rating: 4.6, price: '₹1100', originalPrice: '₹2000', discount: '(45% OFF)',
   },
 ];
